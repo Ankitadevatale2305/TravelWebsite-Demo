@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traval Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,100;1,400&display=swap');
+  *{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  header{
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 200px;
+    transition: 0.5s ease;
+  }
+  
+  header .brand{
+    color:#fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+
+  }
+  header .navigation{
+    position: relative;
+  }
+  header .navigation-items a{
+    position: relative;
+    color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    margin-left: 30px;
+    transition: 0.5s ease;
+  }
+  header .navigation-items a::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 0%;
+    height: 3px;
+    bottom: 0px;
+    left: 0;
+   transition: 0.3s ease;
+  }
+  header .navigation-items a:hover::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+   transition: 0.5s ease;
+  }
+  section{
+    padding: 100px 200px;
+
+  }
+  .home{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #2696f9;
+  }
+  .home::before{
+    z-index: 777;
+    content: '';
+    position: absolute;
+    background: rgba(3, 96, 251, 0.3);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+  }
+  .home .content{
+    z-index: 888;
+    color: #fff;
+    width: 70%;
+    margin-top: 50px;
+    display: none;
+  }
+  .home .content.active{
+    display: block;
+  }
+  .home .content h1{
+    font-size: 4em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    line-height: 75px;
+    margin-bottom: 40px;
+  }
+  .home .content h1 span{
+    font-weight: 500;
+    font-size: 1em;
+  }
+ .home .content p{
+    margin-bottom: 65px;
+ }
+ .home .content a{
+    background: #fff;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 2px;
+ }
+ .home .media-icons{
+    z-index: 888;
+    position: absolute;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease;
+ }
+ .home .media-icons a{
+    color: #fff;
+    font-size: 1.6em;
+ }
+ .home .media-icons a:not(:last-child){
+    margin-bottom: 20px;
+ }
+ .home .media-icons a:hover{
+    transform: scale(1.3);
+    transition: 0.5s ease;
+ }
+ .home video{
+  z-index: 000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+ }
+ 
+ .slider-navigation{
+  z-index: 888;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(80px);
+  margin-bottom: 12px;
+
+}
+.slider-navigation .nav-btn{
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-sizing: 0 0 2px rgba(255 ,  255,  255 , 00.5);
+  transition: 0.3s ease;
+
+}
+.slider-navigation .nav-btn:not(:last-child){
+ margin-right: 20px;
+}
+
+.slider-navigation .nav-btn:hover{
+  transform: scale(1.2);
+}
+.vedio-slide{
+  position: absolute;
+  width: 100%;
+  /* clip-path: circle(0% at 0 50%); */
+  clip-path: circle(0% at 0 41%);
+}
+.vedio-slide.active{
+clip-path: circle(150.0% at 0 50%);
+transition: 2s ease;
+transition-property: clip-path;
+}
+.slider-navigation .nav-btn.active{
+  background: #2696f9;
+
+}
+ @media (max-width: 1040px){
+    header {
+        padding: 10px 13px;
+       
+    }
+    section {
+        padding: 100px 13px;
+    }
+    .home .media-icons {
+        right: 15px;
+    }
+   
+    header .navigation  .navigation-items a {
+      color: #222;
+      font-size: 1.2rem;
+      margin: 20px;
+  }
+  header .navigation  .navigation-items a::before {
+  background: #222;
+  height: 5px;
+}
+  header .navigation.active  .navigation-items{
+    background: #fff;
+    width: 600px;
+    max-width: 600px;
+    margin: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(1 1 1 /20%);
+
+  }
+
+    header .navigation {
+       display: none;
+    }
+    header .navigation.active {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(1, 1, 1, 0.5);
+  }
+    .menu-btn{
+        background: url(/img/menu.png)no-repeat;
+        background-position: center;
+        background-size: 30px;
+        height: 40px;
+        width: 50px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        
+    }
+    .menu-btn.active{
+      z-index: 999;
+      background: url(/img/close.jpg)no-repeat;
+      background-position: center;
+      background-size: 25px;
+      height: 40px;
+      width: 50px;
+      transition: 0.3s ease;
+      cursor: pointer;
+      
+    }
+ }
+    
+ @media (max-width:325px){
+  .home .content h1 {
+    font-size: 2em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 44px;
+    margin-bottom: 11px;
+}
+ }
+</style>
+<body>
+    <header>
+       <a href="#" class="brand">Travel</a>
+       <div class="menu-btn"></div>
+       <div class="navigation">
+        <div class="navigation-items">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Explore</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact</a>
+        </div>
+       </div>
+    </header> 
+
+    <section class="home">
+      <video class="vedio-slide active" src="vedio/vedio1.mp4" autoplay muted loop></video>
+      <video class="vedio-slide" src="vedio/vedio2.mp4" autoplay muted loop></video>
+      <video class="vedio-slide" src="vedio/vedio3.mp4" autoplay muted loop></video>
+      <video class="vedio-slide" src="vedio/vedio4.mp4" autoplay muted loop></video>
+      <video class="vedio-slide" src="vedio/vedio5.mp4" autoplay muted loop></video>
+
+       <div class="content active">
+        <h1>wonderful.<br><span>Island</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repellat veritatis, nisi corrupti distinctio molestias in ab debitis ad. Ducimus aliquid perspiciatis corrupti inventore maxime temporibus quisquam. Dolorem, tempora dolores.</p>
+         <a href="#">Read More</a>
+    </div>
+
+    <div class="content">
+        <h1>Camping.<br><span>Enjoy</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repellat veritatis, nisi corrupti distinctio molestias in ab debitis ad. Ducimus aliquid perspiciatis corrupti inventore maxime temporibus quisquam. Dolorem, tempora dolores.</p>
+         <a href="#">Read More</a>
+    </div>
+
+    <div class="content">
+        <h1>Adventure.<br><span>Off Road</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repellat veritatis, nisi corrupti distinctio molestias in ab debitis ad. Ducimus aliquid perspiciatis corrupti inventore maxime temporibus quisquam. Dolorem, tempora dolores.</p>
+         <a href="#">Read More</a>
+    </div>
+
+    <div class="content">
+        <h1>Road Trip.<br><span>Together</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repellat veritatis, nisi corrupti distinctio molestias in ab debitis ad. Ducimus aliquid perspiciatis corrupti inventore maxime temporibus quisquam. Dolorem, tempora dolores.</p>
+         <a href="#">Read More</a>
+    </div>
+
+    <div class="content">
+        <h1>Feel Nature.<br><span>Relax</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus repellat veritatis, nisi corrupti distinctio molestias in ab debitis ad. Ducimus aliquid perspiciatis corrupti inventore maxime temporibus quisquam. Dolorem, tempora dolores.</p>
+         <a href="#">Read More</a>
+    </div>
+
+    <div class="media-icons">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+
+    </div>
+    <div class="slider-navigation">
+        <div class="nav-btn active"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+    </div>
+    </section>
+
+
+    <script type="text/javascript">
+      const menuBtn = document.querySelector(".menu-btn");
+      const navigation = document.querySelector(".navigation"); 
+      menuBtn.addEventListener("click" , () =>{
+        menuBtn.classList.toggle("active");
+        navigation.classList.toggle("active");
+      });
+
+      const btns = document.querySelectorAll(".nav-btn");
+      const slides = document.querySelectorAll(".vedio-slide")
+      const contents = document.querySelectorAll(".content")
+
+
+      var sliderNav = function(manual){
+      btns.forEach((btn) => {
+      btn.classList.remove("active");
+      });
+      
+      slides.forEach((slide) => {
+      slide.classList.remove("active");
+      });
+
+      contents.forEach((content) => {
+      content.classList.remove("active");
+      });
+      
+      
+
+
+        btns[manual].classList.add("active");
+        slides[manual].classList.add("active");
+        contents[manual].classList.add("active");
+      }
+
+
+      btns.forEach((btn , i) => {
+        btn.addEventListener("click" , () => {
+            sliderNav(i)
+        });
+      });
+    </script>
+</body>
+</html>
